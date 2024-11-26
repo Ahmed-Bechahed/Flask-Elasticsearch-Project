@@ -1,0 +1,2 @@
+ELASTIC_HOST = 'elasticsearch'
+ELASTIC_PORT = 9200

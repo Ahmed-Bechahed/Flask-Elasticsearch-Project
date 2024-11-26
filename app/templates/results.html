@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Results for {{ title }}  {{ cast }}  {{ year }}  {{ genres }}</h2>
+
+<ul>
+    {% for result in results %}
+    <li>
+        <strong>{{ result['_source']['title'] }}</strong> ({{ result['_source']['year'] }})<br>
+        Cast: {{ result['_source']['cast']|join(', ') }}<br>
+        Genres: {{ result['_source']['genres']|join(', ') }}
+    </li>
+    {% endfor %}
+</ul>
+<a href="/">Back to search</a>
+{% endblock %}
+
