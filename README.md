@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 01d526d (Initial commit)
-=======
->>>>>>> 01d526de7d577ee581fe029f05da53d3b15042ac
 # Flask Elasticsearch Project
 
 A web application that allows users to search for movies dynamically using Elasticsearch. This project is containerized using Docker and managed with Docker Compose for easy deployment and scalability.
 
+---
+
 ## Features
+
 - **Dynamic Movie Search**: Search for movies by title, cast, year, or genres.
 - **Flask Backend**: A lightweight and robust Python web framework.
 - **Elasticsearch Integration**: High-performance search engine for querying movie data.
@@ -20,13 +16,6 @@ A web application that allows users to search for movies dynamically using Elast
 
 ## Project Structure
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-flask-elasticsearch-project/ ├── app/ │ ├── init.py # Flask app initialization │ ├── routes.py # Application routes │ ├── templates/ │ │ ├── base.html # Base HTML template │ │ ├── index.html # Search form template │ │ └── results.html # Results page template │ ├── static/ │ │ └── style.css # Application styles ├── elasticsearch/ │ ├── config.py # Elasticsearch configuration │ └── ingest.py # Script for ingesting movie data ├── dataset/ │ └── movies.json # Sample movie dataset ├── Dockerfile # Dockerfile for building the app container ├── docker-compose.yml # Docker Compose configuration ├── run.py # Main entry point for the app ├── requirements.txt # Python dependencies └── README.md # Project documentation
-
-=======
-=======
->>>>>>> 01d526de7d577ee581fe029f05da53d3b15042ac
 ```plaintext
 flask-elasticsearch-project/
 ├── app/
@@ -48,12 +37,7 @@ flask-elasticsearch-project/
 ├── run.py                    # Main entry point for the app
 ├── requirements.txt          # Python dependencies
 └── README.md                 # Project documentation
-<<<<<<< HEAD
->>>>>>> 01d526d (Initial commit)
-=======
->>>>>>> 01d526de7d577ee581fe029f05da53d3b15042ac
 
----
 
 ## Prerequisites
 
