@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="movie-details-title">{{ movie.title }} ({{ movie.year }})</h2>
+
+<div class="movie-details">
+    <div class="movie-details-image">
+        {% if movie.thumbnail %}
+        <img src="{{ movie.thumbnail }}" alt="Movie Poster" class="movie-poster">
+        {% else %}
+        <div class="placeholder-image">No Image</div>
+        {% endif %}
+    </div>
+
+    <div class="movie-details-info">
+        <h3>Details:</h3>
+        <p><strong>Year:</strong> {{ movie.year }}</p>
+        <p><strong>Cast:</strong> {{ movie.cast|join(', ') }}</p>
+        <p><strong>Genres:</strong> {{ movie.genres|join(', ') }}</p>
+        <p><strong>Summary:</strong> {{ movie.extract }}</p>
+
+    </div>
+</div>
+{% endblock %}

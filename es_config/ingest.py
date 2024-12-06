@@ -11,18 +11,26 @@ INDEX_NAME = 'movies'
 # Get the absolute path to the movies.json file
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(CURRENT_DIR, '../dataset/movies.json')
-
+    
 def create_index():
-    if not es.indices.exists(index=INDEX_NAME):
+    if es.indices.exists(index=INDEX_NAME):
+        es.indices.delete(index=INDEX_NAME)
         es.indices.create(
             index=INDEX_NAME,
             body={
+                "settings": {
+                "index": {
+                    "number_of_shards":1,
+                    "number_of_replicas": 1 # Default is 1; you can adjust this if needed
+                } 
+            },
                 "mappings": {
                     "properties": {
-                        "title": {"type": "text"},
+                        "title": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
                         "year": {"type": "integer"},
                         "cast": {"type": "text"},
-                        "genres": {"type": "keyword"}  # Added genres as an array of keywords
+                        "genres": {"type": "keyword"} 
+
 
                     }
                 }

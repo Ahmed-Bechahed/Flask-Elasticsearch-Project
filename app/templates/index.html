@@ -12,8 +12,20 @@
     <label for="year">Year:</label>
     <input type="number" id="year" name="year" placeholder="Enter release year">
 
-    <label for="genres">genres:</label>
-    <input type="text" id="genres" name="genres" placeholder="Enter genres genre">
+    <!-- <label for="genres">genres:</label>
+    <input type="text" id="genres" name="genres" placeholder="Enter genres genre">  -->
+    <label for="genres">Genres:</label>
+    <div class="genres-checkboxes">
+        <label><input type="checkbox" name="genres" value="Action"> Action</label>
+        <label><input type="checkbox" name="genres" value="Drama"> Drama</label>
+        <label><input type="checkbox" name="genres" value="Comedy"> Comedy</label>
+        <label><input type="checkbox" name="genres" value="Thriller"> Thriller</label>
+        <label><input type="checkbox" name="genres" value="Horror"> Horror</label>
+        <label><input type="checkbox" name="genres" value="Science Fiction"> Science Fiction</label>
+        <label><input type="checkbox" name="genres" value="Romance"> Romance</label>
+        <label><input type="checkbox" name="genres" value="Fantasy"> Fantasy</label>
+        <!-- Add more genres here -->
+    </div>
 
     <button type="submit">Search</button>
 </form>

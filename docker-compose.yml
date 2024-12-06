@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.5
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200  # Points Kibana to the Elasticsearch container
+    ports:
+      - "5601:5601"  # Exposes Kibana on port 5601
+    networks:
+      - app-network
+    volumes:
+      - kibana_data:/usr/share/kibana/data  # Add volume to persist Kibana data
+    depends_on:
+      - elasticsearch
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.5
     container_name: elasticsearch
@@ -8,10 +22,12 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    
     ulimits:
       memlock:
         soft: -1
         hard: -1
+        
     ports:
       - "9200:9200"
     volumes:
@@ -34,6 +50,8 @@ services:
 
 volumes:
   es_data:
+    driver: local
+  kibana_data:
     driver: local
 
 networks:

@@ -1,16 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Results for {{ title }}  {{ cast }}  {{ year }}  {{ genres }}</h2>
+<h2 class="search-title">Results for {{ title }} {{ cast }} {{ year }} {{ genres|join(', ') }}</h2>
+<!-- Display the total number of results -->
+{% if total_results %}
+    <p class="total-results">Found {{ total_results }} movie(s) matching your criteria.</p>
+{% endif %}
+<a href="/" class="back-to-search">Back to search</a>
 
-<ul>
+<div class="movie-cards-container">
     {% for result in results %}
-    <li>
-        <strong>{{ result['_source']['title'] }}</strong> ({{ result['_source']['year'] }})<br>
-        Cast: {{ result['_source']['cast']|join(', ') }}<br>
-        Genres: {{ result['_source']['genres']|join(', ') }}
-    </li>
+    <div class="movie-card">
+        <div class="movie-card-content">
+            <!-- Left Section: Movie Poster -->
+            <div class="movie-card-image">
+                {% if result['_source']['thumbnail'] %}
+                <img src="{{ result['_source']['thumbnail'] }}" alt="Movie Poster" class="movie-poster">
+                {% else %}
+                <div class="placeholder-image">No Image</div>
+                {% endif %}
+            </div>
+
+            <!-- Right Section: Movie Details -->
+            <div class="movie-card-details">
+                <h3 class="movie-title">{{ result['_source']['title'] }}</h3>
+                <p class="movie-year"><strong>Year:</strong> {{ result['_source']['year'] }}</p>
+                <p class="movie-cast"><strong>Cast:</strong> {{ result['_source']['cast']|join(', ') }}</p>
+                <p class="movie-genres"><strong>Genres:</strong> {{ result['_source']['genres']|join(', ') }}</p>
+                <a href="/movie/{{ result['_id'] }}" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
-<a href="/">Back to search</a>
+</div>
+
 {% endblock %}
+
+
 
